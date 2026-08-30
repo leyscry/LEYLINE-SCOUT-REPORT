@@ -1,0 +1,91 @@
+name: Run Private Python Scripts
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run:
+
+    runs-on: ubuntu-latest
+    steps:
+
+      # ==========================================
+      # Checkout 当前仓库
+      # ==========================================
+      - name: Checkout current repository
+        uses: actions/checkout@v4
+
+      # ==========================================
+      # 设置 Python
+      # ==========================================
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+
+      # ==========================================
+      # Clone 私有仓库
+      # ==========================================
+
+      - name: Clone private repository
+        env:
+          GH_TOKEN: ${{ secrets.GHP_TOKEN }}
+        run: |
+          git clone \
+          https://${GH_TOKEN}@github.com/leyscry/Forbidden-Scroll.git
+
+
+      # ==========================================
+      # 进入仓库
+      # ==========================================
+
+      - name: Enter repository
+        run: |
+          cd Forbidden-Scroll
+          ls -la
+
+      # ==========================================
+      # 自动生成 requirements.txt
+      # ==========================================
+
+      - name: Generate requirements.txt
+        run: |
+          cd Forbidden-Scroll
+
+          pip install pipreqs
+
+          pipreqs . \
+            --force \
+            --ignore .git
+
+      # ==========================================
+      # 安装依赖
+      # ==========================================
+
+      - name: Install requirements
+        run: |
+          cd Forbidden-Scroll
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+
+      # ==========================================
+      # 运行 Python ①
+      # ==========================================
+
+      - name: Run Script 1
+        run: |
+          cd Forbidden-Scroll
+          python stablecoin_split.py
+
+
+      # ==========================================
+      # 运行 Python ②
+      # ==========================================
+
+      - name: Run Script 2
+        run: |
+          cd Forbidden-Scroll
+          python  stablecoin_whole.py
