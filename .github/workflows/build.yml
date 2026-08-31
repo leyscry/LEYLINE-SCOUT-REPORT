@@ -65,3 +65,10 @@ jobs:
         run: |
           cd Forbidden-Scroll
           python  stablecoin_whole.py
+
+
+
+      - name: Run Script 3
+        run: |
+          cd Forbidden-Scroll
+          python  baseLiquidity.py
