@@ -1,0 +1,1047 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>US Market Liquidity</title>
+
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #0b1120;
+    color: #d8dee9;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+
+.container {
+    max-width: 1450px;
+    margin: auto;
+    padding: 35px;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+
+h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+
+.subtitle {
+    margin-top: 8px;
+    color: #8491a7;
+}
+
+
+.panel {
+    background: #121b2b;
+    border: 1px solid #29364b;
+    border-radius: 18px;
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+
+.hero {
+    border-left: 4px solid #38bdf8;
+}
+
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 35px;
+}
+
+
+.hero-value {
+    font-size: 52px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+
+.status {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 18px;
+}
+
+
+.formula {
+    background: #0d1524;
+    border-radius: 12px;
+    padding: 18px;
+    color: #a9c7e0;
+
+    font-family:
+        monospace;
+
+    line-height: 1.7;
+}
+
+
+.change-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(4, 1fr);
+    gap: 10px;
+}
+
+
+.change {
+    background: #101827;
+    border-radius: 10px;
+    padding: 12px;
+
+    color: #7e8ba0;
+    font-size: 12px;
+}
+
+
+.change b {
+    display: block;
+    margin-top: 7px;
+
+    color: #d8dee9;
+    font-size: 16px;
+}
+
+
+.section-title {
+    margin:
+        5px
+        0
+        20px;
+}
+
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+
+.card {
+    background: #121b2b;
+    border: 1px solid #29364b;
+
+    border-radius: 16px;
+
+    padding: 20px;
+}
+
+
+.card-title {
+    color: #98a6bb;
+    font-size: 14px;
+}
+
+
+.value {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+
+.description {
+    color: #9aa8ba;
+    line-height: 1.7;
+}
+
+
+.meta {
+    margin-top: 18px;
+
+    color: #718096;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+}
+
+
+.bottom-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 20px;
+}
+
+
+.big-status {
+    font-size: 24px;
+    font-weight: bold;
+
+    margin:
+        12px
+        0;
+}
+
+
+.footer {
+    margin-top: 25px;
+
+    color: #667085;
+
+    font-size: 12px;
+
+    text-align: center;
+}
+
+
+.positive {
+    color: #4ade80;
+}
+
+
+.negative {
+    color: #f87171;
+}
+
+
+.neutral {
+    color: #facc15;
+}
+
+
+@media (max-width: 1100px) {
+
+    .cards {
+        grid-template-columns:
+            1fr;
+    }
+
+    .hero-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .container {
+        padding: 18px;
+    }
+
+    header {
+        display: block;
+    }
+
+    .bottom-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .change-grid {
+        grid-template-columns:
+            1fr 1fr;
+    }
+
+    .hero-value {
+        font-size: 40px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="container">
+
+
+<header>
+
+<div>
+
+<h1>
+💵 US MARKET LIQUIDITY
+</h1>
+
+
+<div class="subtitle">
+
+Federal · Treasury · Banking · Funding Market
+
+</div>
+
+</div>
+
+</header>
+
+
+<!-- ====================================================== -->
+<!-- NET LIQUIDITY -->
+<!-- ====================================================== -->
+
+<div
+class="panel hero"
+id="netLiquidityPanel">
+
+</div>
+
+
+<!-- ====================================================== -->
+<!-- CORE COMPONENTS -->
+<!-- ====================================================== -->
+
+<h2 class="section-title">
+
+📊 Liquidity Components
+
+</h2>
+
+
+<div
+class="cards"
+id="coreCards">
+
+</div>
+
+
+<!-- ====================================================== -->
+<!-- BUFFER + FUNDING -->
+<!-- ====================================================== -->
+
+<div class="bottom-grid">
+
+
+<div
+class="panel"
+id="rrpPanel">
+
+</div>
+
+
+<div
+class="panel"
+id="fundingPanel">
+
+</div>
+
+
+</div>
+
+
+<div
+class="footer"
+id="footer">
+
+</div>
+
+
+</div>
+
+
+<script>
+
+
+const DATA = {"dashboard": "US Market Liquidity Monitor", "collected_at_utc": "2026-09-05T12:06:18.211635+00:00", "indicators": {"bank_reserves": {"name": "Bank Reserves", "series": "WRBWFRBL", "category": "BANKING", "value": 2929285.0, "formatted_value": "$2.929T", "unit": "Million USD", "data_date": "2026-09-02", "frequency": "Weekly (Wednesday)", "frequency_type": "WEEKLY", "source": "FRED", "changes": {"1W": {"change": 12461.0, "percent": 0.4272, "from_date": "2026-08-26"}, "4W": {"change": -73446.0, "percent": -2.446, "from_date": "2026-08-05"}, "13W": {"change": -116369.0, "percent": -3.8208, "from_date": "2026-06-03"}, "26W": {"change": -84431.0, "percent": -2.8016, "from_date": "2026-03-04"}}}, "tga": {"name": "Treasury General Account", "series": "Treasury FiscalData", "category": "TREASURY", "value": 903928.0, "formatted_value": "$903.9B", "unit": "Million USD", "data_date": "2026-09-03", "frequency": "Daily (Business Days)", "frequency_type": "DAILY", "source": "TREASURY", "changes": {"1D": {"change": -40436.0, "percent": -4.2818, "from_date": "2026-09-02"}, "7D": {"change": -46876.0, "percent": -4.9301, "from_date": "2026-08-27"}, "30D": {"change": -20291.0, "percent": -2.1955, "from_date": "2026-08-04"}, "90D": {"change": 78388.0, "percent": 9.4954, "from_date": "2026-06-05"}}}, "fed_balance_sheet": {"name": "Fed Balance Sheet", "series": "WALCL", "category": "FED", "value": 6737204.0, "formatted_value": "$6.737T", "unit": "Million USD", "data_date": "2026-09-02", "frequency": "Weekly (Wednesday)", "frequency_type": "WEEKLY", "source": "FRED", "changes": {"1W": {"change": 6292.0, "percent": 0.0935, "from_date": "2026-08-26"}, "4W": {"change": -11363.0, "percent": -0.1684, "from_date": "2026-08-05"}, "13W": {"change": 25709.0, "percent": 0.3831, "from_date": "2026-06-03"}, "26W": {"change": 108310.0, "percent": 1.6339, "from_date": "2026-03-04"}}}, "on_rrp": {"name": "Overnight RRP", "series": "RRPONTSYD", "category": "BUFFER", "value": 0.675, "formatted_value": "$0.675B", "unit": "Billion USD", "data_date": "2026-09-04", "frequency": "Daily (Business Days)", "frequency_type": "DAILY", "source": "FRED", "changes": {"1D": {"change": -0.027, "percent": -3.8462, "from_date": "2026-09-03"}, "7D": {"change": 0.5, "percent": 285.7143, "from_date": "2026-08-28"}, "30D": {"change": -0.975, "percent": -59.0909, "from_date": "2026-08-05"}, "90D": {"change": -0.086, "percent": -11.3009, "from_date": "2026-06-05"}}, "status": {"emoji": "⚫", "label": "EXHAUSTED", "impact": "Liquidity buffer effectively depleted"}}, "sofr": {"name": "SOFR", "series": "SOFR", "category": "FUNDING", "value": 3.66, "formatted_value": "3.66%", "unit": "Percent", "data_date": "2026-09-03", "frequency": "Daily (Business Days)", "frequency_type": "DAILY", "source": "FRED", "changes": {"1D": {"change": 0.01, "percent": 0.274, "from_date": "2026-09-02"}, "7D": {"change": 0.02, "percent": 0.5495, "from_date": "2026-08-27"}, "30D": {"change": 0.0, "percent": 0.0, "from_date": "2026-08-04"}, "90D": {"change": 0.03, "percent": 0.8264, "from_date": "2026-06-05"}}}, "effr": {"name": "EFFR", "series": "EFFR", "category": "REFERENCE", "value": 3.63, "formatted_value": "3.63%", "unit": "Percent", "data_date": "2026-09-03", "frequency": "Daily (Business Days)", "frequency_type": "DAILY", "source": "FRED", "changes": {"1D": {"change": 0.0, "percent": 0.0, "from_date": "2026-09-02"}, "7D": {"change": 0.0, "percent": 0.0, "from_date": "2026-08-27"}, "30D": {"change": 0.0, "percent": 0.0, "from_date": "2026-08-04"}, "90D": {"change": 0.01, "percent": 0.2762, "from_date": "2026-06-05"}}}}, "net_liquidity": {"value": 5832574.0, "formatted_value": "$5.833T", "data_date": "2026-09-03", "changes": {"1D": {"change": 40259.0, "percent": 0.695, "from_date": "2026-09-02"}, "7D": {"change": 52922.0, "percent": 0.9157, "from_date": "2026-08-27"}, "30D": {"change": 20854.0, "percent": 0.3588, "from_date": "2026-08-04"}, "90D": {"change": -52620.0, "percent": -0.8941, "from_date": "2026-06-05"}}, "status": {"emoji": "🟡", "label": "NEUTRAL / STABLE"}, "components": {"fed_balance_sheet": 6737204.0, "tga": 903928.0, "on_rrp_billion": 0.702}, "component_dates": {"fed_balance_sheet": "2026-09-02", "on_rrp": "2026-09-03"}}, "liquidity_buffer": {"value": 0.675, "formatted_value": "$0.675B", "status": {"emoji": "⚫", "label": "EXHAUSTED", "impact": "Liquidity buffer effectively depleted"}, "changes": {"1D": {"change": -0.027, "percent": -3.8462, "from_date": "2026-09-03"}, "7D": {"change": 0.5, "percent": 285.7143, "from_date": "2026-08-28"}, "30D": {"change": -0.975, "percent": -59.0909, "from_date": "2026-08-05"}, "90D": {"change": -0.086, "percent": -11.3009, "from_date": "2026-06-05"}}, "data_date": "2026-09-04"}, "funding_market": {"sofr": 3.66, "effr": 3.63, "spread": 0.03, "status": {"emoji": "🟢", "label": "HEALTHY", "spread": 0.03}}};
+
+
+// ============================================================
+// FORMAT MONEY
+// ============================================================
+
+function formatMoneyMillion(value) {
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+        return "—";
+    }
+
+    const abs =
+        Math.abs(value);
+
+
+    if (abs >= 1000000) {
+
+        return "$"
+            + (
+                value / 1000000
+            ).toFixed(3)
+            + "T";
+
+    }
+
+
+    if (abs >= 1000) {
+
+        return "$"
+            + (
+                value / 1000
+            ).toFixed(1)
+            + "B";
+
+    }
+
+
+    return "$"
+        + value.toFixed(1)
+        + "M";
+
+}
+
+
+// ============================================================
+// FORMAT SIGNED CHANGE
+// ============================================================
+
+function formatChange(change) {
+
+    if (!change) {
+
+        return "—";
+
+    }
+
+
+    const value =
+        change.change;
+
+
+    const sign =
+        value > 0
+        ? "+"
+        : "";
+
+
+    return (
+
+        sign
+
+        + formatMoneyMillion(value)
+
+        + "<br>"
+
+        + "("
+
+        + (
+            change.percent ?? 0
+        ).toFixed(2)
+
+        + "%)"
+
+    );
+
+}
+
+
+// ============================================================
+// GET PERIODS
+// ============================================================
+
+function getPeriods(item) {
+
+    if (
+        item.frequency_type === "DAILY"
+    ) {
+
+        return [
+
+            "1D",
+
+            "7D",
+
+            "30D",
+
+            "90D"
+
+        ];
+
+    }
+
+
+    return [
+
+        "1W",
+
+        "4W",
+
+        "13W",
+
+        "26W"
+
+    ];
+
+}
+
+
+// ============================================================
+// RENDER CHANGES
+// ============================================================
+
+function renderChanges(item) {
+
+    const periods =
+        getPeriods(item);
+
+
+    return periods.map(
+
+        label => `
+
+        <div class="change">
+
+            ${label}
+
+            <b>
+
+            ${formatChange(
+                item.changes?.[label]
+            )}
+
+            </b>
+
+        </div>
+
+        `
+
+    ).join("");
+
+}
+
+
+// ============================================================
+// NET LIQUIDITY HERO
+// ============================================================
+
+const net =
+    DATA.net_liquidity;
+
+
+if (
+
+    net
+
+    && !net.error
+
+) {
+
+    document.getElementById(
+        "netLiquidityPanel"
+    ).innerHTML = `
+
+
+    <div class="hero-grid">
+
+
+        <div>
+
+
+            <h2>
+
+            🔥 FED NET LIQUIDITY
+
+            </h2>
+
+
+            <div class="hero-value">
+
+            ${net.formatted_value}
+
+            </div>
+
+
+            <div class="status">
+
+            ${net.status.emoji}
+
+            ${net.status.label}
+
+            </div>
+
+
+            <div class="description">
+
+            Net Liquidity is calculated using:
+
+            <br><br>
+
+            <b>
+
+            Fed Balance Sheet
+            − TGA
+            − ON RRP
+
+            </b>
+
+            </div>
+
+
+        </div>
+
+
+        <div>
+
+
+            <div class="formula">
+
+Fed Balance Sheet:
+${formatMoneyMillion(
+    net.components.fed_balance_sheet
+)}
+
+<br>
+
+TGA:
+${formatMoneyMillion(
+    net.components.tga
+)}
+
+<br>
+
+ON RRP:
+${formatMoneyMillion(
+    net.components.on_rrp_billion * 1000
+)}
+
+<br><br>
+
+────────────────
+
+<br>
+
+NET LIQUIDITY:
+
+<br>
+
+<b>
+
+${net.formatted_value}
+
+</b>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <br>
+
+
+    <div class="change-grid">
+
+        ${renderChanges({
+
+            frequency_type: "DAILY",
+
+            changes: net.changes
+
+        })}
+
+    </div>
+
+
+    <div class="meta">
+
+    📅 Latest Net Liquidity Date:
+    ${net.data_date}
+
+    <br>
+
+    🏦 Fed BS Data:
+    ${net.component_dates.fed_balance_sheet}
+
+    (Weekly Carry Forward)
+
+    <br>
+
+    🪣 ON RRP Data:
+    ${net.component_dates.on_rrp}
+
+    </div>
+
+    `;
+
+}
+
+
+// ============================================================
+// CORE COMPONENT CARDS
+// ============================================================
+
+const cards =
+    document.getElementById(
+        "coreCards"
+    );
+
+
+const coreKeys = [
+
+    "bank_reserves",
+
+    "tga",
+
+    "fed_balance_sheet"
+
+];
+
+
+for (const key of coreKeys) {
+
+
+    const item =
+        DATA.indicators[key];
+
+
+    if (!item) continue;
+
+
+    if (item.error) {
+
+
+        cards.innerHTML += `
+
+        <div class="card">
+
+            <div class="card-title">
+
+            ${item.name}
+
+            </div>
+
+            <br>
+
+            ❌ Data Error
+
+        </div>
+
+        `;
+
+
+        continue;
+
+    }
+
+
+    let explanation = "";
+
+
+    if (key === "bank_reserves") {
+
+        explanation =
+            "Bank reserves represent liquidity held inside the banking system.";
+
+    }
+
+
+    if (key === "tga") {
+
+        explanation =
+            "TGA rising generally absorbs liquidity from the banking system; falling TGA generally releases liquidity.";
+
+    }
+
+
+    if (key === "fed_balance_sheet") {
+
+        explanation =
+            "The Fed balance sheet represents the structural base of Federal Reserve liquidity.";
+
+    }
+
+
+    cards.innerHTML += `
+
+
+    <div class="card">
+
+
+        <div class="card-title">
+
+        ${item.name}
+
+        </div>
+
+
+        <div class="value">
+
+        ${item.formatted_value}
+
+        </div>
+
+
+        <div class="description">
+
+        ${explanation}
+
+        </div>
+
+
+        <br>
+
+
+        <div class="change-grid">
+
+        ${renderChanges(item)}
+
+        </div>
+
+
+        <div class="meta">
+
+        📅 Data:
+        ${item.data_date}
+
+        <br>
+
+        🔄
+        ${item.frequency}
+
+        <br>
+
+        📊 Source:
+        ${item.series}
+
+        </div>
+
+
+    </div>
+
+    `;
+
+}
+
+
+// ============================================================
+// ON RRP
+// ============================================================
+
+const rrp =
+    DATA.indicators.on_rrp;
+
+
+if (
+
+    rrp
+
+    && !rrp.error
+
+) {
+
+
+    document.getElementById(
+        "rrpPanel"
+    ).innerHTML = `
+
+
+        <h2>
+
+        🪣 Liquidity Buffer — ON RRP
+
+        </h2>
+
+
+        <div class="value">
+
+        ${rrp.formatted_value}
+
+        </div>
+
+
+        <div class="big-status">
+
+        ${rrp.status.emoji}
+
+        ${rrp.status.label}
+
+        </div>
+
+
+        <div class="description">
+
+        ${rrp.status.impact}
+
+        <br><br>
+
+        ON RRP is treated as a
+        <b>liquidity buffer</b>.
+
+        </div>
+
+
+        <br>
+
+
+        <div class="change-grid">
+
+        ${renderChanges(rrp)}
+
+        </div>
+
+
+        <div class="meta">
+
+        📅 Data:
+        ${rrp.data_date}
+
+        <br>
+
+        📊 FRED:
+        ${rrp.series}
+
+        </div>
+
+    `;
+
+}
+
+
+// ============================================================
+// FUNDING MARKET
+// ============================================================
+
+const funding =
+    DATA.funding_market;
+
+
+if (
+
+    funding
+
+    && funding.status
+
+) {
+
+
+    const spreadSign =
+
+        funding.spread > 0
+
+        ? "+"
+
+        : "";
+
+
+    document.getElementById(
+        "fundingPanel"
+    ).innerHTML = `
+
+
+        <h2>
+
+        🌡️ Funding Market
+
+        </h2>
+
+
+        <div class="value">
+
+        SOFR:
+        ${funding.sofr.toFixed(2)}%
+
+        </div>
+
+
+        <div class="big-status">
+
+        ${funding.status.emoji}
+
+        ${funding.status.label}
+
+        </div>
+
+
+        <div class="description">
+
+        EFFR:
+
+        <b>
+
+        ${funding.effr.toFixed(2)}%
+
+        </b>
+
+        <br><br>
+
+        SOFR − EFFR Spread:
+
+        <b>
+
+        ${spreadSign}
+        ${funding.spread.toFixed(3)}%
+
+        </b>
+
+        <br><br>
+
+        Funding conditions are monitored
+        separately from Net Liquidity.
+
+        </div>
+
+    `;
+
+}
+
+
+// ============================================================
+// FOOTER
+// ============================================================
+
+document.getElementById(
+    "footer"
+).innerText =
+
+    "Last collected: "
+
+    + DATA.collected_at_utc
+
+    + " UTC";
+
+
+</script>
+
+
+</body>
+
+</html>
+
