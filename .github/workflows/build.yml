@@ -72,3 +72,19 @@ jobs:
         run: |
           cd Forbidden-Scroll
           python  baseLiquidity.py
+
+      - name: Run Script 1
+        run: |
+          cd Forbidden-Scroll
+          python stablecoin_split.py
+
+      - name: Run Script 2
+        run: |
+          cd Forbidden-Scroll
+          python  stablecoin_whole.py
+
+
+      - name: Run Script 4
+        run: |
+          cd Forbidden-Scroll
+          python  etf_flow_radar.py
