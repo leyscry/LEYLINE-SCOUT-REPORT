@@ -1,0 +1,811 @@
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>
+LEYSCRY · Stablecoin Liquidity Radar
+</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+body {
+    background: #0a0d12;
+    color: #dce3ea;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    margin: 0;
+    padding: 40px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+h1 {
+    letter-spacing: 4px;
+}
+
+.subtitle {
+    color: #7f8b99;
+}
+
+.card {
+    background: #11161d;
+
+    border: 1px solid #252d38;
+
+    border-radius: 12px;
+
+    padding: 25px;
+
+    margin-top: 25px;
+}
+
+.grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(200px, 1fr)
+        );
+
+    gap: 20px;
+}
+
+.value {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.label {
+    color: #8893a0;
+    margin-bottom: 8px;
+}
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 12px;
+
+    border-bottom:
+        1px solid #252d38;
+
+    text-align: right;
+}
+
+th:first-child,
+td:first-child {
+    text-align: left;
+}
+
+.guide {
+    color: #aeb7c2;
+    line-height: 1.7;
+}
+
+canvas {
+    margin-top: 20px;
+}
+
+.pct-small {
+    font-size:0.8em;
+    color:#999999;
+    margin-left:6px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>LEYSCRY</h1>
+
+<div class="subtitle">
+STABLECOIN LIQUIDITY RADAR
+</div>
+
+<p class="subtitle">
+DATE: 2026-11-21 · SOURCE: DefiLlama
+</p>
+
+
+<!-- CURRENT SUPPLY -->
+
+<div class="card">
+
+<h2>① CURRENT SUPPLY</h2>
+
+<div class="grid">
+
+<div>
+<div class="label">USDT</div>
+<div class="value">
+$174.51B
+</div>
+</div>
+
+<div>
+<div class="label">USDC</div>
+<div class="value">
+$68.63B
+</div>
+</div>
+
+<div>
+<div class="label">TOTAL</div>
+<div class="value">
+$243.14B
+</div>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- NET FLOW -->
+
+<div class="card">
+
+<h2>② NET SUPPLY FLOW</h2>
+
+<table>
+
+<tr>
+
+<th></th>
+
+<th>1D</th>
+
+<th>1W</th>
+
+<th>30D</th>
+
+</tr>
+
+
+<tr>
+
+<td>USDT</td>
+
+<td>$-490.24M<span class="pct-small">(-0.2801%)</span></td>
+<td>$-600.02M<span class="pct-small">(-0.3427%)</span></td>
+<td>$-8.02B<span class="pct-small">(-4.3949%)</span></td>
+
+</tr>
+
+
+<tr>
+
+<td>USDC</td>
+
+<td>$-173.25M<span class="pct-small">(-0.2518%)</span></td>
+<td>$-586.75M<span class="pct-small">(-0.8477%)</span></td>
+<td>$-4.03B<span class="pct-small">(-5.5451%)</span></td>
+
+</tr>
+
+
+<tr>
+
+<td><b>TOTAL</b></td>
+
+<td><b>$-663.49M<span class="pct-small">(-0.2721%)</span></b></td>
+<td><b>$-1.19B<span class="pct-small">(-0.4857%)</span></b></td>
+<td><b>$-12.05B<span class="pct-small">(-4.7224%)</span></b></td>
+
+</tr>
+
+</table>
+
+</div>
+
+
+<!-- SIGNAL -->
+
+<div class="card">
+
+<h2>③ LIQUIDITY SIGNAL</h2>
+
+<div class="grid">
+
+<div>
+
+<div class="label">
+TODAY FLOW
+</div>
+
+<div class="value">
+$-601.78M
+</div>
+
+</div>
+
+
+<div>
+
+<div class="label">
+30D AVG DAILY FLOW
+</div>
+
+<div class="value">
+$-400.04M
+</div>
+
+</div>
+
+
+<div>
+
+<div class="label">
+30D FLOW VOLATILITY
+</div>
+
+<div class="value">
+±$372.72M
+</div>
+
+</div>
+
+
+<div>
+
+<div class="label">
+ANOMALY SCORE
+</div>
+
+<div class="value">
+-0.54σ
+</div>
+
+</div>
+
+</div>
+
+
+<h2>
+NORMAL ⚪
+</h2>
+
+</div>
+
+
+<!-- TOTAL SUPPLY CHART -->
+
+<div class="card">
+
+<h2>
+④ 30-DAY TOTAL SUPPLY TREND
+</h2>
+
+<canvas id="supplyChart"></canvas>
+
+</div>
+
+
+<!-- DAILY FLOW CHART -->
+
+<div class="card">
+
+<h2>
+⑤ 30-DAY DAILY NET FLOW
+</h2>
+
+<canvas id="flowChart"></canvas>
+
+</div>
+
+
+<!-- HISTORY -->
+
+<div class="card">
+
+<h2>
+⑥ LAST 30 DAYS HISTORY
+</h2>
+
+<table>
+
+<tr>
+
+<th>DATE</th>
+
+<th>USDT</th>
+
+<th>USDC</th>
+
+<th>TOTAL</th>
+
+<th>NET FLOW</th>
+
+<th>Δ %</th>
+
+</tr>
+
+
+        <tr>
+            <td>2026-11-21</td>
+            <td>$174.77B</td>
+            <td>$68.70B</td>
+            <td>$243.47B</td>
+            <td>$-601.78M</td>
+            <td>-0.2466%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-11-20</td>
+            <td>$175.26B</td>
+            <td>$68.81B</td>
+            <td>$244.08B</td>
+            <td>+$271.95M</td>
+            <td>+0.1115%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-11-19</td>
+            <td>$175.22B</td>
+            <td>$68.59B</td>
+            <td>$243.80B</td>
+            <td>$-937.05M</td>
+            <td>-0.3829%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-11-18</td>
+            <td>$175.41B</td>
+            <td>$69.33B</td>
+            <td>$244.74B</td>
+            <td>$-136.58M</td>
+            <td>-0.0558%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-11-17</td>
+            <td>$175.41B</td>
+            <td>$69.46B</td>
+            <td>$244.88B</td>
+            <td>+$50.88M</td>
+            <td>+0.0208%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-11-16</td>
+            <td>$175.48B</td>
+            <td>$69.34B</td>
+            <td>$244.83B</td>
+            <td>+$55.07M</td>
+            <td>+0.0225%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-11-15</td>
+            <td>$175.47B</td>
+            <td>$69.30B</td>
+            <td>$244.77B</td>
+            <td>+$172.23M</td>
+            <td>+0.0704%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-11-14</td>
+            <td>$175.37B</td>
+            <td>$69.22B</td>
+            <td>$244.60B</td>
+            <td>$-569.36M</td>
+            <td>-0.2322%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-11-13</td>
+            <td>$175.69B</td>
+            <td>$69.47B</td>
+            <td>$245.17B</td>
+            <td>$-597.26M</td>
+            <td>-0.2430%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-11-12</td>
+            <td>$175.86B</td>
+            <td>$69.91B</td>
+            <td>$245.77B</td>
+            <td>$-328.27M</td>
+            <td>-0.1334%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-11-11</td>
+            <td>$175.93B</td>
+            <td>$70.16B</td>
+            <td>$246.09B</td>
+            <td>$-757.81M</td>
+            <td>-0.3070%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-11-10</td>
+            <td>$176.45B</td>
+            <td>$70.40B</td>
+            <td>$246.85B</td>
+            <td>$-727.10M</td>
+            <td>-0.2937%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-11-09</td>
+            <td>$177.02B</td>
+            <td>$70.56B</td>
+            <td>$247.58B</td>
+            <td>$-99.52M</td>
+            <td>-0.0402%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-11-08</td>
+            <td>$177.00B</td>
+            <td>$70.68B</td>
+            <td>$247.68B</td>
+            <td>+$70.17M</td>
+            <td>+0.0283%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-11-07</td>
+            <td>$177.00B</td>
+            <td>$70.60B</td>
+            <td>$247.61B</td>
+            <td>$-642.81M</td>
+            <td>-0.2589%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-11-06</td>
+            <td>$177.52B</td>
+            <td>$70.73B</td>
+            <td>$248.25B</td>
+            <td>$-820.76M</td>
+            <td>-0.3295%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-11-05</td>
+            <td>$177.92B</td>
+            <td>$71.15B</td>
+            <td>$249.07B</td>
+            <td>$-233.48M</td>
+            <td>-0.0937%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-11-04</td>
+            <td>$178.35B</td>
+            <td>$70.96B</td>
+            <td>$249.30B</td>
+            <td>$-772.93M</td>
+            <td>-0.3091%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-11-03</td>
+            <td>$178.79B</td>
+            <td>$71.29B</td>
+            <td>$250.08B</td>
+            <td>$-1.04B</td>
+            <td>-0.4159%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-11-02</td>
+            <td>$179.47B</td>
+            <td>$71.65B</td>
+            <td>$251.12B</td>
+            <td>$-555.71M</td>
+            <td>-0.2208%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-11-01</td>
+            <td>$179.80B</td>
+            <td>$71.88B</td>
+            <td>$251.68B</td>
+            <td>$-332.46M</td>
+            <td>-0.1319%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-10-31</td>
+            <td>$180.10B</td>
+            <td>$71.91B</td>
+            <td>$252.01B</td>
+            <td>+$33.96M</td>
+            <td>+0.0135%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-10-30</td>
+            <td>$180.49B</td>
+            <td>$71.49B</td>
+            <td>$251.98B</td>
+            <td>$-423.16M</td>
+            <td>-0.1677%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-10-29</td>
+            <td>$181.01B</td>
+            <td>$71.39B</td>
+            <td>$252.40B</td>
+            <td>$-943.79M</td>
+            <td>-0.3725%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-10-28</td>
+            <td>$182.01B</td>
+            <td>$71.34B</td>
+            <td>$253.34B</td>
+            <td>$-12.67M</td>
+            <td>-0.0050%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-10-27</td>
+            <td>$182.09B</td>
+            <td>$71.26B</td>
+            <td>$253.36B</td>
+            <td>$-833.55M</td>
+            <td>-0.3279%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-10-26</td>
+            <td>$182.47B</td>
+            <td>$71.72B</td>
+            <td>$254.19B</td>
+            <td>$-191.76M</td>
+            <td>-0.0754%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-10-25</td>
+            <td>$182.60B</td>
+            <td>$71.78B</td>
+            <td>$254.38B</td>
+            <td>$-100.34M</td>
+            <td>-0.0394%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-10-24</td>
+            <td>$182.62B</td>
+            <td>$71.87B</td>
+            <td>$254.48B</td>
+            <td>$-480.69M</td>
+            <td>-0.1885%</td>
+        </tr>
+        
+        <tr>
+            <td>2026-10-23</td>
+            <td>$182.70B</td>
+            <td>$72.26B</td>
+            <td>$254.96B</td>
+            <td>$-512.23M</td>
+            <td>-0.2005%</td>
+        </tr>
+        
+
+</table>
+
+</div>
+
+
+<!-- GUIDE -->
+
+<div class="card guide">
+
+<h2>
+INDICATOR GUIDE
+</h2>
+
+
+<h3>CURRENT SUPPLY</h3>
+
+<p>
+The current circulating supply of USDT and USDC.
+It represents the total tracked stablecoin liquidity.
+</p>
+
+
+<h3>NET SUPPLY FLOW</h3>
+
+<p>
+Current supply minus previous supply.
+</p>
+
+<p>
+Positive (+): supply increased.
+<br>
+
+Negative (-): supply decreased.
+</p>
+
+
+<h3>1D / 1W / 30D</h3>
+
+<p>
+Net supply change compared with
+1 day, 1 week and 30 days ago.
+<br>
+<span style="color:#aaa">Numbers in parentheses are percentage change of circulating supply.</span>
+</p>
+
+
+<h3>30D AVG DAILY FLOW</h3>
+
+<p>
+Average daily net supply change
+during the last 30 days.
+</p>
+
+
+<h3>30D FLOW VOLATILITY</h3>
+
+<p>
+Standard deviation of daily net supply flows
+during the last 30 days.
+</p>
+
+
+<h3>ANOMALY SCORE (σ)</h3>
+
+<p>
+
+Z =
+
+(Today's Flow − 30D Average Flow)
+
+÷
+
+30D Flow Standard Deviation
+
+</p>
+
+
+<h3>SIGNAL</h3>
+
+<p>
+
+Z ≥ +2 → HIGH INFLOW 🔥
+
+<br>
+
++1 ~ +2 → MODERATE INFLOW 🟢
+
+<br>
+
+−1 ~ +1 → NORMAL ⚪
+
+<br>
+
+−2 ~ −1 → MODERATE OUTFLOW 🟠
+
+<br>
+
+Z ≤ −2 → HIGH OUTFLOW 🔴
+
+</p>
+
+
+<h3>DATA NOTE</h3>
+
+<p>
+
+Net Supply Flow measures the net change
+in circulating supply.
+
+<br><br>
+
+It does not necessarily represent the gross amount
+of stablecoins issued or redeemed.
+
+</p>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+const dates =
+["2026-10-23", "2026-10-24", "2026-10-25", "2026-10-26", "2026-10-27", "2026-10-28", "2026-10-29", "2026-10-30", "2026-10-31", "2026-11-01", "2026-11-02", "2026-11-03", "2026-11-04", "2026-11-05", "2026-11-06", "2026-11-07", "2026-11-08", "2026-11-09", "2026-11-10", "2026-11-11", "2026-11-12", "2026-11-13", "2026-11-14", "2026-11-15", "2026-11-16", "2026-11-17", "2026-11-18", "2026-11-19", "2026-11-20", "2026-11-21"];
+
+const totals =
+[254962417948.0, 254481730860.0, 254381388061.0, 254189630402.0, 253356083834.0, 253343411569.0, 252399624193.0, 251976464035.0, 252010420827.0, 251677958609.0, 251122252183.0, 250077876795.0, 249304941818.0, 249071458835.0, 248250702279.0, 247607893455.0, 247678063660.0, 247578541979.0, 246851437286.0, 246093625297.0, 245765358962.0, 245168100251.0, 244598740150.0, 244770974901.0, 244826042638.0, 244876924225.0, 244740347544.0, 243803300893.0, 244075248341.0, 243473469013.41635];
+
+const flows =
+[-512228564.0, -480687088.0, -100342799.0, -191757659.0, -833546568.0, -12672265.0, -943787376.0, -423160158.0, 33956792.0, -332462218.0, -555706426.0, -1044375388.0, -772934977.0, -233482983.0, -820756556.0, -642808824.0, 70170205.0, -99521681.0, -727104693.0, -757811989.0, -328266335.0, -597258711.0, -569360101.0, 172234751.0, 55067737.0, 50881587.0, -136576681.0, -937046651.0, 271947448.0, -601779327.5836487];
+
+
+// ------------------------------------------------------------
+// TOTAL SUPPLY
+// ------------------------------------------------------------
+
+new Chart(
+
+document.getElementById("supplyChart"),
+
+{
+    type: "line",
+
+    data: {
+
+        labels: dates,
+
+        datasets: [{
+            label: "USDT + USDC TOTAL SUPPLY",
+
+            data: totals,
+
+            borderWidth: 2,
+
+            tension: 0.2
+        }]
+    }
+}
+);
+
+
+// ------------------------------------------------------------
+// DAILY FLOW
+// ------------------------------------------------------------
+
+new Chart(
+
+document.getElementById("flowChart"),
+
+{
+    type: "bar",
+
+    data: {
+
+        labels: dates,
+
+        datasets: [{
+            label: "DAILY NET FLOW",
+
+            data: flows,
+
+            borderWidth: 1
+        }]
+    }
+}
+);
+
+</script>
+
+
+</body>
+
+</html>
